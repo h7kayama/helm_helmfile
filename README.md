@@ -2,6 +2,11 @@
 
 ## helm
 
+### install
+```
+$ brew install helm
+```
+
 ### add repo
 ```
 $ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -33,7 +38,12 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-## values
+### undeploy
+```
+$ helm uninstall envoy
+```
+
+### values
 ```
 $ helm install envoy stable/envoy -f envoy/values.yaml
 ```
@@ -50,7 +60,12 @@ $ brew install helmfile
 $ helmfile sync
 ```
 
-## values
+### undeploy
+```
+$ helmfile destroy
+```
+
+### values
 ```envoy/helmfile.yaml
 releases:
   - name: helmfile-envoy
@@ -58,4 +73,9 @@ releases:
     chart: stable/envoy
     values:
       - values.yaml
+```
+
+### environments
+```
+$ helmfile -e staging sync
 ```

@@ -1,6 +1,11 @@
+environments:
+  {{ .Environment.Name }}:
+    values:
+      - environments/{{ .Environment.Name }}-values.yaml
+
 releases:
-  - name: helmfile-envoy
-    namespace: helmfile-envoy
+  - name: helmfile-envoy-{{ .Values.stage }}
+    namespace: helmfile-envoy-{{ .Environment.Name }}
     chart: stable/envoy
     values:
-      - values.yaml
+      - values.yaml.gotmpl

@@ -1,2 +1,6 @@
+environments:
+  development:
+  staging:
+  production:
 helmfiles:
   - ./envoy/helmfile.yaml
