@@ -3,7 +3,6 @@
 ## helm
 
 ### add repo
-
 ```
 $ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
@@ -15,7 +14,6 @@ stable  https://kubernetes-charts.storage.googleapis.com/
 ```
 
 ### search chart
-
 ```
 $ helm search repo envoy
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
@@ -24,7 +22,7 @@ stable/ambassador       5.3.2           0.86.1          DEPRECATED A Helm chart 
 stable/contour          0.2.0           v0.15.0         Contour Ingress controller for Kubernetes
 ```
 
-### install chart
+### deploy
 ```
 $ helm install envoy stable/envoy
 NAME: envoy
@@ -33,4 +31,31 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
+```
+
+## values
+```
+$ helm install envoy stable/envoy -f envoy/values.yaml
+```
+
+## helmfile
+
+### install
+```
+$ brew install helmfile
+```
+
+### deploy
+```
+$ helmfile sync
+```
+
+## values
+```envoy/helmfile.yaml
+releases:
+  - name: helmfile-envoy
+    namespace: helmfile-envoy
+    chart: stable/envoy
+    values:
+      - values.yaml
 ```

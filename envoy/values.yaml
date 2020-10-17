@@ -1,0 +1,7 @@
+service:
+  type: LoadBalancer
+  ports:
+    n0:
+      port: 11111
+      targetPort: 10000
+      protocol: TCP

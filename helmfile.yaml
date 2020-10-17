@@ -1,0 +1,2 @@
+helmfiles:
+  - ./envoy/helmfile.yaml

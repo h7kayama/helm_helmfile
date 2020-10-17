@@ -1,0 +1,6 @@
+releases:
+  - name: helmfile-envoy
+    namespace: helmfile-envoy
+    chart: stable/envoy
+    values:
+      - values.yaml
