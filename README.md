@@ -48,6 +48,11 @@ $ helm uninstall envoy
 $ helm install envoy stable/envoy -f envoy/values.yaml
 ```
 
+### create
+```
+$ helm create foo
+```
+
 ## helmfile
 
 ### install
