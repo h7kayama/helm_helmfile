@@ -2,7 +2,7 @@
 
 ## helm
 
-### install
+### setup
 ```
 $ brew install helm
 ```
@@ -38,14 +38,14 @@ REVISION: 1
 TEST SUITE: None
 ```
 
+#### with values
+```
+$ helm install envoy stable/envoy -f envoy/values.yaml
+```
+
 ### undeploy
 ```
 $ helm uninstall envoy
-```
-
-### values
-```
-$ helm install envoy stable/envoy -f envoy/values.yaml
 ```
 
 ### create
@@ -55,7 +55,7 @@ $ helm create foo
 
 ## helmfile
 
-### install
+### setup
 ```
 $ brew install helmfile
 ```
@@ -65,12 +65,7 @@ $ brew install helmfile
 $ helmfile sync
 ```
 
-### undeploy
-```
-$ helmfile destroy
-```
-
-### values
+#### with values
 ```envoy/helmfile.yaml
 releases:
   - name: helmfile-envoy
@@ -80,7 +75,19 @@ releases:
       - values.yaml
 ```
 
-### environments
+### with environments
+```envoy/helmfile.yaml
+environments:
+  {{ .Environment.Name }}:
+    values:
+      - environments/{{ .Environment.Name }}-values.yaml
+```
+
 ```
 $ helmfile -e staging sync
+```
+
+### undeploy
+```
+$ helmfile destroy
 ```
